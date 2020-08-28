@@ -10,17 +10,27 @@ commands:
                 type: string
         steps:
             - run:
-                name: << parameters.script-name >>
+                name: << parameters.script >>
                 command: |
                     chmod +x << parameters.script-name >>
                     source << parameters.script-name >>
+    install-package:
+        parameters:
+            package-name:
+                type: string
+        steps:
+            -run:
+                command: |
+                    apk add << parameters.package-name >> --quiet
 jobs:
   build:
     docker:
-        - image: node:14.8.0
-        # - image: stedolan/jq:master
+        - image: alpine:3.7
     steps:
         - checkout
+        - install-jq:
+            package-name: jq 1.6
+
         - run-script:
             script: Run bash script
             script-name: first_bash_script.sh
