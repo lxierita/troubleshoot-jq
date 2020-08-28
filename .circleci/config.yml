@@ -8,12 +8,12 @@ commands:
                 type: string
             script-name:
                 type: string
-    steps:
-        - run:
-            name: << parameters.script-name >>
-            command: |
-                chmod +x $<< parameters.script >>
-                source $<< parameters.script >>
+        steps:
+            - run:
+                name: << parameters.script-name >>
+                command: |
+                    chmod +x $<< parameters.script >>
+                    source $<< parameters.script >>
 jobs:
   build:
     docker:
