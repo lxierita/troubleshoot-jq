@@ -1,0 +1,26 @@
+version: 2.1
+
+commands:
+    run-script:
+        description: Runs a script from within the current folder
+        parameters:
+            script:
+                type: string
+            script-name:
+                type: string
+    steps:
+        - run:
+            name: << parameters.script-name >>
+            command: |
+                chmod +x $<< parameters.script >>
+                source $<< parameters.script >>
+jobs:
+  build:
+    docker:
+        - image: node:14.8.0
+        - image: stedolan/jq:master
+    steps:
+        - checkout
+        - run-script:
+            script: Run bash script
+            script-name: first_bash_script.sh
