@@ -28,9 +28,8 @@ jobs:
         - image: alpine:3.7
     steps:
         - checkout
-        - install-jq:
-            package-name: jq 1.6
-
+        - install-package:
+            package-name: jq
         - run-script:
             script: Run bash script
             script-name: first_bash_script.sh
