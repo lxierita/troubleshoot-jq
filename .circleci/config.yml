@@ -12,13 +12,13 @@ commands:
             - run:
                 name: << parameters.script-name >>
                 command: |
-                    chmod +x $<< parameters.script >>
-                    source $<< parameters.script >>
+                    chmod +x << parameters.script >>
+                    source << parameters.script-name >>
 jobs:
   build:
     docker:
         - image: node:14.8.0
-        - image: stedolan/jq:master
+        # - image: stedolan/jq:master
     steps:
         - checkout
         - run-script:

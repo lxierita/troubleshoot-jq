@@ -1,2 +1,3 @@
-# get jq
-cat "hello"
+jq -n '{"key": "value"}' > test.json
+
+cat test.json
