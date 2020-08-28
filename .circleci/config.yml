@@ -19,7 +19,7 @@ commands:
             package-name:
                 type: string
         steps:
-            -run:
+            - run:
                 command: |
                     apk add << parameters.package-name >> --quiet
 jobs:
