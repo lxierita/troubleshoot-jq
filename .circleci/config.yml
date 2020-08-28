@@ -12,7 +12,7 @@ commands:
             - run:
                 name: << parameters.script-name >>
                 command: |
-                    chmod +x << parameters.script >>
+                    chmod +x << parameters.script-name >>
                     source << parameters.script-name >>
 jobs:
   build:
